@@ -2,7 +2,7 @@
   var boc_id = "MTIzMw==";
   var hrefUrl = window.location.href;
   $.ajax({
-    url: "http://static.hzboc.com/web/index.php/getwxsdk/",
+    url: "https://uploadphotos.github.io/challengeBook/index.php/getwxsdk/",
     type: "post",
     data: { pageUrl: hrefUrl, boc_id: boc_id },
     dataType: 'json',
@@ -31,7 +31,7 @@
         trigger: function trigger(res) { },
         success: function success(res) {
           //alert('已分享');
-          $.post('http://wx.bocweb.cn/boc_data/index.php/getwxsdk/share/', { boc_id: boc_id }, function () { }, 'json');
+          $.post('https://wx.bocweb.cn/boc_data/index.php/getwxsdk/share/', { boc_id: boc_id }, function () { }, 'json');
           dataForWeixin.success && dataForWeixin.success();
         },
         cancel: function cancel(res) {
@@ -54,7 +54,7 @@
         },
         success: function success(res) {
           //alert('已分享');
-          $.post('http://wx.bocweb.cn/boc_data/index.php/getwxsdk/share/', { boc_id: boc_id }, function () { }, 'json');
+          $.post('https://wx.bocweb.cn/boc_data/index.php/getwxsdk/share/', { boc_id: boc_id }, function () { }, 'json');
           dataForWeixin.success && dataForWeixin.success();
 
         },
