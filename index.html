@@ -1,34 +1,171 @@
+<!DOCTYPE HTML>
 <html>
+
 <head>
-<script type="text/javascript">
-function loadXMLDoc()
-{
-var xmlhttp;
-if (window.XMLHttpRequest)
-  {// code for IE7+, Firefox, Chrome, Opera, Safari
-  xmlhttp=new XMLHttpRequest();
-  }
-else
-  {// code for IE6, IE5
-  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-  }
-xmlhttp.onreadystatechange=function()
-  {
-  if (xmlhttp.readyState==4 && xmlhttp.status==200)
-    {
-    document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
-    }
-  }
-xmlhttp.open("GET","demo_get.asp",true);
-xmlhttp.send();
-}
-</script>
+    <meta charset="utf-8">
+    <title>这里有份突破挑战书，你接吗？</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="full-screen" content="true" />
+    <meta name="screen-orientation" content="portrait" />
+    <meta name="x5-fullscreen" content="true" />
+    <meta name="360-fullscreen" content="true" />
+    <link href="css/style.css" rel="stylesheet" />
+    <script src="js/js.js"></script>
+    <script src="js/zepto.min.js"></script>
+    <script src="js/wxsdk.js"></script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+    <script>
+        (function () {
+            window.wxShare && window.wxShare({
+                title: "这里有份突破挑战书，你接吗？",
+                desc: "世界那么大，等你去看看，现在就出发吧！",
+                linkurl: "http://static.hzboc.com/web/shanghou_20190409/",//地址
+                img: "http://static.hzboc.com/web/shanghou_20190409/share.jpg?v=1"//图片地址
+            });
+        })();
+
+    </script>
 </head>
+
 <body>
+    <div style="margin: auto;width: 100%;height: 100%;" class="egret-player" data-entry-class="Main" data-orientation="auto" data-scale-mode="fixedWide" data-frame-rate="30" data-content-width="750"
+data-content-height="1334" data-multi-fingered="2" data-show-fps="false" data-show-log="false" data-show-fps-style="x:0,y:0,size:12,textColor:0xffffff,bgAlpha:0.9">
+</div>
+<div id="vd" class="vd hide">
+    <video id="myVideo" class="myVideo" src="http://static.hzboc.com/video/aozan_20190404.mp4?v=12" preload="auto" x5-video-player-type="h5"
+        x-webkit-airplay="true" webkit-playsinline="true" playsinline="true"></video>
+</div>
+<img id="bg" class="bg hide" src="" />
+<img id="btn1" class="btn1 hide" src="image/btn4_1.png" />
+<img id="btn2" class="btn2 hide" src="image/btn4_2.png" />
+<div id="music">
+    <audio id="bgm" src="media/bgmusic.mp3" loop preload="auto"></audio>
+    <audio id="eft1" src="media/sound2.mp3" preload="auto"></audio>
+</div>
+<script>
+    var loadScript = function (list, callback) {
+        var loaded = 0;
+        var loadNext = function () {
+            loadSingleScript(list[loaded], function () {
+                loaded++;
+                if (loaded >= list.length) {
+                    callback();
+                }
+                else {
+                    loadNext();
+                }
+            })
+        };
+        loadNext();
+    };
 
-<h2>AJAX</h2>
-<button type="button" onclick="loadXMLDoc()">请求数据</button>
-<div id="myDiv"></div>
+    var loadSingleScript = function (src, callback) {
+        var s = document.createElement('script');
+        s.async = false;
+        s.src = src;
+        s.addEventListener('load', function () {
+            s.parentNode.removeChild(s);
+            s.removeEventListener('load', arguments.callee, false);
+            callback();
+        }, false);
+        document.body.appendChild(s);
+    };
 
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'json/manifest.json?v=' + Math.random(), true);
+    xhr.addEventListener("load", function () {
+        var manifest = JSON.parse(xhr.response);
+        var list = manifest.initial.concat(manifest.game);
+        loadScript(list, function () {
+            /**
+             * {
+             * "renderMode":, //Engine rendering mode, "canvas" or "webgl"
+             * "audioType": 0 //Use the audio type, 0: default, 2: web audio, 3: audio
+             * "antialias": //Whether the anti-aliasing is enabled in WebGL mode, true: on, false: off, defaults to false
+             * "calculateCanvasScaleFactor": //a function return canvas scale factor
+             * }
+             **/
+            egret.runEgret({
+                renderMode: "webgl", audioType: 0, calculateCanvasScaleFactor: function (context) {
+                    var backingStore = context.backingStorePixelRatio ||
+                        context.webkitBackingStorePixelRatio ||
+                        context.mozBackingStorePixelRatio ||
+                        context.msBackingStorePixelRatio ||
+                        context.oBackingStorePixelRatio ||
+                        context.backingStorePixelRatio || 1;
+                    return (window.devicePixelRatio || 1) / backingStore;
+                }
+            });
+        });
+    });
+    xhr.send(null);
+
+    var version = "1.2";
+    var webUrl = "";
+    var eft1 = document.getElementById('eft1');
+    var audio = document.getElementById('bgm');
+    var myVideo = document.getElementById("myVideo");
+    var bg = document.getElementById("bg");
+    var btn1 = document.getElementById("btn1");
+    var btn2 = document.getElementById("btn2");
+    function checkSize() {
+        scaleTarget({ "target": myVideo, "width": 750, "height": 1334, "top": 0, "left": 0 }, 750, 1334, window.innerWidth, window.innerHeight, "out");
+        scaleTarget({ "target": bg, "width": 750, "height": 1334, "top": 0, "left": 0 }, 750, 1334, window.innerWidth, window.innerHeight, "out");
+        scaleTarget({ "target": btn1, "width": 249, "height": 75, "top": 1201 - 20, "left": 85 }, 750, 1334, window.innerWidth, window.innerHeight, "out");
+        scaleTarget({ "target": btn2, "width": 249, "height": 75, "top": 1201 - 20, "left": 410 }, 750, 1334, window.innerWidth, window.innerHeight, "out");
+    }
+
+    window.onresize = function () {
+        checkSize();
+    }
+    var isPlay = false;
+    myVideo.addEventListener("ended", function () {
+        $(".vd").addClass("anime2");
+        Main.main.createGameScene()
+        setTimeout(hideVideo, 500);
+        startPlay()
+        isPlay = false;
+    });
+    function hideVideo() {
+        $(".vd").addClass("hide");
+    }
+    function play_video() {
+        checkSize();
+        $(".vd").removeClass("hide").addClass("anime");
+        myVideo.play();
+    }
+    function startPlay() {
+        audio.play();
+    }
+    function playEft() {
+        eft1.currentTime = 0;
+        eft1.play();
+    }
+    document.addEventListener("WeixinJSBridgeReady", function () {
+        audio.load();
+        eft1.load();
+        myVideo.load();
+    }, false);
+
+    function scroll_rest() {
+        window.scrollTo(0, 0);
+    }
+
+    function showBg(src) {
+        checkSize();
+        document.getElementById("bg").src = src;
+        $(".bg").removeClass("hide");
+        $(".btn1").removeClass("hide");
+        $(".btn2").removeClass("hide");
+    }
+    btn1.addEventListener("click", function () {
+        window.location.href = "https://item.m.jd.com/product/43608330355.html?dl_abtest=o&utm_source=iosapp&utm_medium=appshare&utm_cam_335139774&utm_term=CopyURL&ad_od=share&ShareTm=ahbFDVZH8z4uWhjCf%2Bq35fOPKIFJmMKOnPraqNl5luNRbQPE5eSpgSvzo5puGUhyaZJSNuLYHeLZKDWA7KglztAazMwN5v2RzJWtDhgfqWZK5aZT6Ws5nkO0QfldoznLK/dNIZg9XOqvuvJeFcBOMpegX%2BrFQK1Gdy8FDTlWky4=";
+    })
+    btn2.addEventListener("click", function () {
+        window.location.href = " https://redact.m.jd.com/detail/fore/316694.html";
+    })
+</script>
 </body>
+
 </html>

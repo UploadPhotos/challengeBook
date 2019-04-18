@@ -1,0 +1,189 @@
+@charset "UTF-8";
+html, body {
+	-ms-touch-action: none;
+	background: #FFFFFF;
+	padding: 0;
+	border: 0;
+	margin: 0;
+	height: 100%;
+  overflow: hidden;
+}
+.game{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+}
+.bg{
+  position: absolute;
+  width: 100%;
+	height: 100%;
+  opacity: 0.0001;
+}
+.bg2{
+  position: absolute;
+  width: 100%;
+	height: 100%;
+}
+.btn1{
+  position: absolute;
+  width: 100%;
+	height: 100%;
+  opacity: 0.0001;
+}
+.btn2{
+  position: absolute;
+  width: 100%;
+	height: 100%;
+  opacity: 0.0001;
+}
+.btn3{
+  position: absolute;
+  width: 100%;
+	height: 100%;
+}
+.btn4{
+  position: absolute;
+  width: 100%;
+	height: 100%;
+}
+.btn{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background:#000;
+}
+.play_btn{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background:#000;
+}
+.hint{
+  position: absolute;
+  width: 100%;
+	height: 100%;
+  pointer-events: none; 
+}
+.map{
+  position: absolute;
+}
+.bg_s{
+  position: absolute;
+  width: 100%;
+	height: 100%;
+  pointer-events: none; 
+  /*穿透*/
+}
+.bg_s2{
+  position: absolute;
+  width: 100%;
+}
+.bg_s3{
+  position: absolute;
+  width: 100%;
+}
+.bg_s4{
+  position: absolute;
+  width: 100%;
+}
+.vd{
+	width: 100%;
+	height: 100%;
+	background:#000;
+	position: absolute;
+  overflow: hidden;
+}
+video{
+	position: absolute;
+  overflow: hidden;
+	width: 100%;
+	height: 100%;
+	line-height: 0;
+    vertical-align: baseline;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    outline: none;
+}
+video::-webkit-media-controls-enclosure {
+    display: none !important;
+}
+.bg{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+}
+.tip{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+}
+.tip_s{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+}
+.hide{
+  display: none;
+}
+.anime{
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s;
+}
+.anime2{
+  -webkit-animation: fadeOut 1s;
+  animation: fadeOut 1s;
+}
+.anime4{
+  animation:myfirst2 2s infinite;
+	-webkit-animation:myfirst2 2s infinite;
+}
+
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+@-webkit-keyframes myfirst2 /* Safari 和 Chrome */
+{
+	0%   {transform:scale(1);}
+	50%{transform:scale(1.2);}
+	100%{transform:scale(1);}
+}
+@keyframes myfirst2 /* Safari 和 Chrome */
+{
+	0%   {transform:scale(1);}
+	50%{transform:scale(1.1);}
+	100%{transform:scale(1);}
+}
