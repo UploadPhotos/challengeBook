@@ -254,7 +254,7 @@ var Main = function(e) {
             return __generator(this, function(a) {
                 switch (a.label) {
                     case 0:
-                        return a.trys.push([0, 4, , 5]), [4, RES.loadConfig("resource/default.res.json", "resource/")];
+                        return a.trys.push([0, 4, , 5]), [4, RES.loadConfig("../json/default.res.json", "../resource/")];
                     case 1:
                         return a.sent(), [4, RES.loadGroup("loading", 0)];
                     case 2:
