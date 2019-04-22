@@ -16,17 +16,17 @@
 			"name": "zi1_4_png"
 		},
 		{
-			"url": "assets/loading/bg2_1.jpg",
+			"url": "bg2_1.jpg",
 			"type": "image",
 			"name": "bg2_1_jpg"
 		},
 		{
-			"url": "assets/loading/img3_3.png",
+			"url": "img3_3.png",
 			"type": "image",
 			"name": "img3_3_png"
 		},
 		{
-			"url": "assets/loading/loading_1.png",
+			"url": "loading_1.png",
 			"type": "image",
 			"name": "loading_1_png"
 		},
@@ -281,7 +281,7 @@
 			"name": "zi1_3_png"
 		},
 		{
-			"url": "assets/loading/load_txt.png",
+			"url": "load_txt.png",
 			"type": "image",
 			"name": "load_txt_png"
 		},
